@@ -1,0 +1,56 @@
+/* Стили для VBox, который содержит таблицу */
+.vbox {
+    -fx-background-color: linear-gradient(to bottom, #f5f7fa, #e4e7eb);
+    -fx-padding: 20;
+}
+
+/* Стили для TableView */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 2);
+    -fx-font-family: "Dimbo Russian", "Arial", sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #111827; /* Цвет текста по умолчанию */
+}
+
+/* Стили для заголовков колонок */
+.table-view .column-header-background {
+    -fx-background-color: #e5e7eb;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+    -fx-font-family: "Dimbo Russian", "Arial", sans-serif;
+}
+
+/* Стили для ячеек */
+.table-view .cell {
+    -fx-padding: 8 12;
+    -fx-text-fill: #111827; /* Цвет текста */
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-font-family: "Dimbo Russian", "Arial", sans-serif;
+}
+
+/* Наведение на строки */
+.table-row-cell:hover {
+    -fx-background-color: #f3f4f6;
+}
+
+/* Выделенная строка */
+.table-row-cell:focused, .table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e40af;
+}
+
+/* Добавим стиль for placeholder (когда таблица пуста) */
+.table-view .placeholder {
+    -fx-text-fill: #6b7280; /* серый цвет для подсказки */
+    -fx-font-style: italic;
+}
+

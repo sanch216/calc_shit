@@ -1,0 +1,86 @@
+/* Styling the AnchorPane for a clean, minimalistic background */
+AnchorPane {
+    -fx-background-color: linear-gradient(to bottom, #f5f7fa, #e4e7eb);
+}
+
+/* Styling Buttons for a modern look with muted gray glow and uniform size */
+Button {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10; /* Top, Right, Bottom, Left padding */
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 17px;
+    -fx-text-fill: #1f2937;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Hover effect for Buttons with muted gray glow and slight scale */
+Button:hover {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 8, 0.3, 0, 0);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-background-color: #f9fafb;
+}
+
+/* Focused state for Buttons with a slightly stronger muted gray glow */
+Button:focused {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 10, 0.4, 0, 0);
+    -fx-border-color: #9ca3af;
+}
+
+/* Styling TextFields for a clean, minimal look */
+TextField {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 3, 0, 0, 1);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Focus effect for TextFields with muted gray glow */
+TextField:focused {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 8, 0.3, 0, 0);
+    -fx-border-color: #9ca3af;
+}
+
+/* Styling CheckBox for a minimal look with gray highlight */
+CheckBox {
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 17px;
+    -fx-text-fill: #1f2937;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Hover effect for CheckBox with subtle highlight */
+CheckBox:hover {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 5, 0.2, 0, 0);
+}
+
+/* Selected state for CheckBox with gray highlight */
+CheckBox:selected {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 8, 0.3, 0, 0);
+}
+
+/* Styling Text elements for clarity and elegance */
+Text {
+    -fx-fill: #1f2937;
+    -fx-font-family: "Dimbo Russian";
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+}
+
+/* Specific styling for income Text to account for larger size */
+#income {
+    -fx-font-size: 26px;
+}
+
+/* Styling for other Text elements */
+#mainJob, #extraJob, #propertySale, #transfer {
+    -fx-font-size: 20px;
+}

@@ -1,0 +1,47 @@
+/* Styling the AnchorPane for a clean, minimalistic background */
+AnchorPane {
+    -fx-background-color: linear-gradient(to bottom, #f5f7fa, #e4e7eb);
+}
+
+/* Styling the ChoiceBox for a modern look with muted gray glow */
+#clientType {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Hover effect for ChoiceBox with muted gray glow and slight scale */
+#clientType:hover {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 8, 0.3, 0, 0);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-background-color: #f9fafb;
+}
+
+/* Focused state for ChoiceBox with a slightly stronger muted gray glow */
+#clientType:focused {
+    -fx-effect: dropshadow(gaussian, #9ca3af, 10, 0.4, 0, 0);
+    -fx-border-color: #9ca3af;
+}
+
+/* Styling the title text for clarity and elegance */
+#title {
+    -fx-fill: #1f2937;
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3, 0, 0, 1);
+}
+
+/* Styling the instructional text, static with no hover effect */
+#whoIsClient {
+    -fx-fill: #1f2937;
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 21px;
+    -fx-opacity: 0.9;
+}

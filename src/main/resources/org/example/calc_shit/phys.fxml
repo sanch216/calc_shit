@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.physController">
+   <children>
+      <Button fx:id="calculate" layoutX="242.0" layoutY="267.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="114.0" text="Рассчитать">
+         <font>
+            <Font name="Dimbo Russian" size="17.0" />
+         </font></Button>
+      <TextField fx:id="mainJobField" layoutX="183.0" layoutY="58.0" prefHeight="26.0" prefWidth="173.0" />
+      <TextField fx:id="extraJobField" layoutX="183.0" layoutY="91.0" prefHeight="26.0" prefWidth="174.0" />
+      <Button fx:id="toExcel" layoutX="242.0" layoutY="308.0" mnemonicParsing="false"  prefHeight="31.0" prefWidth="114.0" text="Экспорт в Excel">
+         <font>
+            <Font name="Dimbo Russian" size="17.0" />
+         </font></Button>
+      <Text fx:id="income" layoutX="147.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Доходы" textAlignment="CENTER" wrappingWidth="98.40000000000009">
+         <font>
+            <Font name="Dimbo Russian" size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="mainJob" layoutX="14.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Основная работа" wrappingWidth="120.79999999999995">
+         <font>
+            <Font name="Dimbo Russian" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="extraJob" layoutX="14.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Доп. работа" wrappingWidth="120.79999999999995">
+         <font>
+            <Font name="Dimbo Russian" size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="propertySaleField" layoutX="183.0" layoutY="122.0" prefHeight="26.0" prefWidth="174.0" />
+      <Text fx:id="propertySale" layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Продажа имущества" wrappingWidth="150.4000000000001">
+         <font>
+            <Font name="Dimbo Russian" size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="transferField" layoutX="183.0" layoutY="155.0" prefHeight="26.0" prefWidth="174.0" />
+      <Text fx:id="transfer" layoutX="14.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Зарубежные переводы" wrappingWidth="159.9999755859376">
+         <font>
+            <Font name="Dimbo Russian" size="20.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="benefit" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Есть Льгота">
+         <font>
+            <Font name="Dimbo Russian" size="17.0" />
+         </font>
+      </CheckBox>
+   </children>
+</AnchorPane>
