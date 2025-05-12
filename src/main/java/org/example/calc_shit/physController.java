@@ -1,12 +1,15 @@
 package org.example.calc_shit;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -216,36 +219,60 @@ public class physController {
                 }
             }
 
-            // Сортировка по налогу
-            data.sort((a, b) -> Double.compare(a.getTax(), b.getTax()));
-
-            // Создаем новое окно
+//            // Создаем новое окно
             Stage resultStage = new Stage();
             resultStage.setTitle("Налоговый расчет");
 
             // Создаем TableView для вывода
-            TableView<Data> table = new TableView<>();
-            TableColumn<Data, String> nameColumn = new TableColumn<>("Источник дохода");
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-            TableColumn<Data, Double> valueColumn = new TableColumn<>("Доход");
-            valueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
-            TableColumn<Data, Double> taxColumn = new TableColumn<>("Налог");
-            taxColumn.setCellValueFactory(new PropertyValueFactory<>("tax"));
+//            TableView<Data> table = new TableView<>();
+//            TableColumn<Data, String> nameColumn = new TableColumn<>("Источник дохода");
+//            nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+//            TableColumn<Data, Double> valueColumn = new TableColumn<>("Доход");
+//            valueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
+//            TableColumn<Data, Double> taxColumn = new TableColumn<>("Налог");
+//            taxColumn.setCellValueFactory(new PropertyValueFactory<>("tax"));
+//
+//            table.getColumns().addAll(nameColumn, valueColumn, taxColumn);
+//            table.getItems().addAll(data);
+//
+//            // Настраиваем размеры колонок
+//            nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.4));
+//            valueColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.3));
+//            taxColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.3));
+//
+//            // Создаем сцену и показываем окно
+//            VBox vbox = new VBox(table);
+//            Scene scene = new Scene(vbox, 600, 400);
+//            //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylePhysResult.css")).toExternalForm());
+//            resultStage.setScene(scene);
+//            resultStage.show();
 
-            table.getColumns().addAll(nameColumn, valueColumn, taxColumn);
-            table.getItems().addAll(data);
 
-            // Настраиваем размеры колонок
-            nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.4));
-            valueColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.3));
-            taxColumn.prefWidthProperty().bind(table.widthProperty().multiply(0.3));
 
-            // Создаем сцену и показываем окно
-            VBox vbox = new VBox(table);
-            Scene scene = new Scene(vbox, 600, 400);
-            //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylePhysResult.css")).toExternalForm());
-            resultStage.setScene(scene);
-            resultStage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("physTable.fxml"));
+
+            Scene scene = null;
+            try {
+                scene = new Scene(loader.load(), 515, 400);
+                scene.getStylesheets().add(getClass().getResource("/org/example/calc_shit/stylePhysResult.css").toExternalForm());
+
+            } catch (IOException e) {
+                System.err.println("Не могу загрузить physTable.fxml" + e.getMessage());
+                e.printStackTrace();
+                return; // или покажи Alert с ошибкой
+            }
+            PhysTableController controller = loader.getController();
+            controller.setData(data); // <- Сюда идёт твой список с налогами
+
+            Stage physTable = new Stage();
+            Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo2.png")));
+            physTable.getIcons().add(icon);
+            physTable.setTitle("Asshole");
+            physTable.setScene(scene);
+            physTable.setResizable(false);
+            physTable.showAndWait();
+
+
         });
     }
 }

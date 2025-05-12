@@ -1,56 +1,61 @@
-/* Стили для VBox, который содержит таблицу */
-.vbox {
-    -fx-background-color: linear-gradient(to bottom, #f5f7fa, #e4e7eb);
-    -fx-padding: 20;
-}
-
-/* Стили для TableView */
-.table-view {
+/* Styling the TableView for a clean, modern look */
+#physTable {
     -fx-background-color: #ffffff;
     -fx-border-color: #d1d5db;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 2);
-    -fx-font-family: "Dimbo Russian", "Arial", sans-serif;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+    -fx-font-family: "Dimbo Russian";
     -fx-font-size: 16px;
-    -fx-text-fill: #111827; /* Цвет текста по умолчанию */
 }
 
-/* Стили для заголовков колонок */
-.table-view .column-header-background {
-    -fx-background-color: #e5e7eb;
-    -fx-border-color: transparent;
+/* Styling the table column headers */
+#physTable .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #e5e7eb, #d1d5db);
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 0 0 1 0;
 }
 
-.table-view .column-header, .table-view .column-header .label {
-    -fx-font-weight: bold;
+/* Styling individual column headers */
+#physTable .column-header .label {
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 17px;
     -fx-text-fill: #1f2937;
-    -fx-font-family: "Dimbo Russian", "Arial", sans-serif;
+    -fx-padding: 8;
+    -fx-alignment: CENTER;
 }
 
-/* Стили для ячеек */
-.table-view .cell {
-    -fx-padding: 8 12;
-    -fx-text-fill: #111827; /* Цвет текста */
-    -fx-border-color: transparent;
-    -fx-background-color: transparent;
-    -fx-font-family: "Dimbo Russian", "Arial", sans-serif;
+/* Hover effect for column headers */
+#physTable .column-header:hover {
+    -fx-background-color: #d1d5db;
+    -fx-effect: dropshadow(gaussian, #9ca3af, 5, 0.3, 0, 0);
 }
 
-/* Наведение на строки */
-.table-row-cell:hover {
-    -fx-background-color: #f3f4f6;
+/* Styling table cells */
+#physTable .table-cell {
+    -fx-font-family: "Dimbo Russian";
+    -fx-font-size: 16px;
+    -fx-text-fill: #1f2937;
+    -fx-padding: 8;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: CENTER;
 }
 
-/* Выделенная строка */
-.table-row-cell:focused, .table-row-cell:selected {
-    -fx-background-color: #dbeafe;
-    -fx-text-fill: #1e40af;
+/* Hover effect for table rows */
+#physTable .table-row-cell:hover {
+    -fx-background-color: #f9fafb;
+    -fx-effect: dropshadow(gaussian, #9ca3af, 5, 0.3, 0, 0);
 }
 
-/* Добавим стиль for placeholder (когда таблица пуста) */
-.table-view .placeholder {
-    -fx-text-fill: #6b7280; /* серый цвет для подсказки */
-    -fx-font-style: italic;
+/* Selected row styling */
+#physTable .table-row-cell:selected {
+    -fx-background-color: #9ca3af;
+    -fx-text-fill: #ffffff;
 }
 
+/* Styling specific columns for consistency */
+#nameIncome, #value, #tax {
+    -fx-alignment: CENTER;
+}
