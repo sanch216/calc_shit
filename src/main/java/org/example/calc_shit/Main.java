@@ -14,10 +14,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
-        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo2.png")));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo.png")));
         stage.getIcons().add(icon);
         Scene scene = new Scene(fxmlLoader.load(), 480, 150);
-        stage.setTitle("Asshole");
+        stage.setTitle("Taxulator");
         String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
         scene.getStylesheets().add(css);
         stage.resizableProperty().setValue(Boolean.FALSE);

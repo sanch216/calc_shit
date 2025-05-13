@@ -60,9 +60,9 @@ public class Controller implements Initializable
                         throw new RuntimeException(e);
                     }
                     Stage phys = new Stage();
-                    Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo2.png")));
+                    Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo.png")));
                     phys.getIcons().add(icon);
-                    phys.setTitle("Asshole");
+                    phys.setTitle("Taxulator");
                     String css = Objects.requireNonNull(this.getClass().getResource("stylePhys.css")).toExternalForm();
                     scene.getStylesheets().add(css);
                     phys.setScene(scene);
@@ -72,13 +72,23 @@ public class Controller implements Initializable
 
 
 
-                } else if (value.equals(types[1])) {
-                    System.out.println(1);// окно для юрлица
-                } else if (value.equals(types[2])) { // окно для ОсОО
-                    System.out.println(2);
+                } else if (value.equals(types[1])) {     // окно для юрлица
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Taxulator");
+                    alert.setHeaderText("В стадии разработки");
+                    alert.setContentText("Скоро...");
+                    alert.showAndWait();
+                    System.out.println("Выбрано Юрлицо");
+                } else if (value.equals(types[2])) {      // окно для ОсОО
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Taxulator");
+                    alert.setHeaderText("В стадии разработки");
+                    alert.setContentText("Скоро...");
+                    alert.showAndWait();
+                    System.out.println("Выбрано ООО (ОсОО)");
                 }
             } else {
-                System.out.println("dinaxuy");
+                System.out.println("ошибка");
             }
         });
 
