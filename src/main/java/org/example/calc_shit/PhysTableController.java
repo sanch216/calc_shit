@@ -33,11 +33,6 @@ public class PhysTableController {
     @FXML
     void initialize(URL location, ResourceBundle resources) {
 
-        assert value != null : "fx:id=\"Income\" was not injected: check your FXML file 'Untitled'.";
-        assert physTable != null : "fx:id=\"physTable\" was not injected: check your FXML file 'Untitled'.";
-        assert tax != null : "fx:id=\"Tax\" was not injected: check your FXML file 'Untitled'.";
-        assert nameIncome != null : "fx:id=\"nameIncome\" was not injected: check your FXML file 'Untitled'.";
-
         value.setCellValueFactory(new PropertyValueFactory<> ("value"));
         tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
         nameIncome.setCellValueFactory(new PropertyValueFactory<>("name"));

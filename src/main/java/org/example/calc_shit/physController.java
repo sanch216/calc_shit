@@ -62,18 +62,6 @@ public class physController {
 
     @FXML
     void initialize(URL location, ResourceBundle resources) {
-        assert benefit != null : "fx:id=\"benefit\" was not injected: check your FXML file 'phys.fxml'.";
-        assert calculate != null : "fx:id=\"calculate\" was not injected: check your FXML file 'phys.fxml'.";
-        assert extraJob != null : "fx:id=\"extraJob\" was not injected: check your FXML file 'phys.fxml'.";
-        assert extraJobField != null : "fx:id=\"extraJobField\" was not injected: check your FXML file 'phys.fxml'.";
-        assert income != null : "fx:id=\"income\" was not injected: check your FXML file 'phys.fxml'.";
-        assert mainJob != null : "fx:id=\"mainJob\" was not injected: check your FXML file 'phys.fxml'.";
-        assert mainJobField != null : "fx:id=\"mainJobField\" was not injected: check your FXML file 'phys.fxml'.";
-        assert propertySale != null : "fx:id=\"propertySale\" was not injected: check your FXML file 'phys.fxml'.";
-        assert propertySaleField != null : "fx:id=\"propertySaleField\" was not injected: check your FXML file 'phys.fxml'.";
-        assert toExcel != null : "fx:id=\"toExcel\" was not injected: check your FXML file 'phys.fxml'.";
-        assert transfer != null : "fx:id=\"transfer\" was not injected: check your FXML file 'phys.fxml'.";
-        assert transferField != null : "fx:id=\"transferField\" was not injected: check your FXML file 'phys.fxml'.";
 
         Font font18 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
         Font font20 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
