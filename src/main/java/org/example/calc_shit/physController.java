@@ -61,7 +61,7 @@ public class physController {
     private TextField transferField;
 
     @FXML
-    void initialize(URL location, ResourceBundle resources) {
+    void initialize() {
 
         Font font18 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
         Font font20 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
@@ -89,9 +89,11 @@ public class physController {
             double doubExtraJobValue = 0.0;
             double doubPropertySaleValue = 0.0;
             double doubTransferValue = 0.0;
+            double totalValue = 0.0;
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
+
             try {
                 if (mainJobValue != null && !mainJobValue.isEmpty()) {
                     doubMainJobValue = Double.parseDouble(mainJobValue);
@@ -120,28 +122,44 @@ public class physController {
             Data extraJob = new Data("Дополнительная работа", doubExtraJobValue);
             Data propertySale = new Data("Продажа имущества", doubPropertySaleValue);
             Data transfer = new Data("Зарубежные переводы", doubTransferValue);
+            Data total = new Data("Всего" ,totalValue) ;
 
             List<Data> data = new ArrayList<>();
             data.add(mainJob);
             data.add(extraJob);
             data.add(propertySale);
             data.add(transfer);
-
+            data.add(total);
+            System.out.println(data);
+            double res = 0;
             // Расчет налогов
             if (benefit.isSelected()) {
+                //totalValue = totalValue + (doubMainJobValue * benefitValue) + doubExtraJobValue + doubPropertySaleValue + doubTransferValue ;
                 for (Data item : data) {
                     if (item.getName().equals("Основная работа")) {
                         item.setTax(item.getValue() * benefitValue);
+                        if (item.getName().equals("Всего")) {
+                            total.setTotal(item.getValue() + 1488);
+                            System.out.println("ssss");
+                        }
+
                     } else {
                         item.setTax(item.getValue() * generalValue);
+                        totalValue = item.sumTotal(item.getValue() * generalValue);
+                        res += totalValue;
+                        System.out.println(res);
+                        total.setTotal(res);
                     }
                 }
             } else {
                 for (Data item : data) {
                     item.setTax(item.getValue() * generalValue);
+                    totalValue = item.sumTotal(item.getValue() * generalValue);
+                    res += totalValue;
+                    System.out.println(res);
+                    total.setTotal(res);
                 }
             }
-
             Stage resultStage = new Stage();
             resultStage.setTitle("Taxulator");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("physTable.fxml"));
@@ -169,5 +187,6 @@ public class physController {
             physTable.showAndWait();
 
         });
+
     }
 }

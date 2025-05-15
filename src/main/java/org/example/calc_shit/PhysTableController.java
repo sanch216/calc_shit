@@ -31,7 +31,7 @@ public class PhysTableController {
     private TableColumn<Data, String> nameIncome; // название источника
 
     @FXML
-    void initialize(URL location, ResourceBundle resources) {
+    void initialize() {
 
         value.setCellValueFactory(new PropertyValueFactory<> ("value"));
         tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
