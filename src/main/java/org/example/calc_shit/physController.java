@@ -1,5 +1,7 @@
 package org.example.calc_shit;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -8,13 +10,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
 
 public class physController {
 
@@ -60,6 +62,8 @@ public class physController {
     @FXML
     private TextField transferField;
 
+    private List<Data> currentData = new ArrayList<>();
+
     @FXML
     void initialize() {
 
@@ -74,7 +78,6 @@ public class physController {
         benefit.setFont(font18);
         toExcel.setFont(font18);
         calculate.setFont(font18);
-
 
         calculate.setOnAction(event -> {
             double benefitValue = 0.05;
@@ -107,22 +110,18 @@ public class physController {
                 if (transferValue != null && !transferValue.isEmpty()) {
                     doubTransferValue = Double.parseDouble(transferValue);
                 }
-            } catch (NumberFormatException e) { // Проверка на ошибку с парсингом
+            } catch (NumberFormatException e) {
                 alert.setHeaderText("Ошибка! Введите числа без букв!");
                 alert.setContentText("Ошибка при парсинге числа: " + e.getMessage());
                 alert.showAndWait();
-                System.out.println("Ошибка при парсинге числа: " + e.getMessage());
-                if(alert.getResult() == ButtonType.OK) {
-
-                }
+                return;
             }
 
-            // Создаем объекты Data
             Data mainJob = new Data("Основная работа", doubMainJobValue);
             Data extraJob = new Data("Дополнительная работа", doubExtraJobValue);
             Data propertySale = new Data("Продажа имущества", doubPropertySaleValue);
             Data transfer = new Data("Зарубежные переводы", doubTransferValue);
-            Data total = new Data("Всего" ,totalValue) ;
+            Data total = new Data("Всего", totalValue);
 
             List<Data> data = new ArrayList<>();
             data.add(mainJob);
@@ -130,63 +129,97 @@ public class physController {
             data.add(propertySale);
             data.add(transfer);
             data.add(total);
-            System.out.println(data);
+
             double res = 0;
-            // Расчет налогов
             if (benefit.isSelected()) {
-                //totalValue = totalValue + (doubMainJobValue * benefitValue) + doubExtraJobValue + doubPropertySaleValue + doubTransferValue ;
                 for (Data item : data) {
                     if (item.getName().equals("Основная работа")) {
                         item.setTax(item.getValue() * benefitValue);
-                        if (item.getName().equals("Всего")) {
-                            total.setTotal(item.getValue() + 1488);
-                            System.out.println("ssss");
-                        }
-
-                    } else {
+                    } else if (!item.getName().equals("Всего")) {
                         item.setTax(item.getValue() * generalValue);
-                        totalValue = item.sumTotal(item.getValue() * generalValue);
+                    }
+                    if (!item.getName().equals("Всего")) {
+                        totalValue = item.sumTotal(item.getTax());
                         res += totalValue;
-                        System.out.println(res);
-                        total.setTotal(res);
                     }
                 }
             } else {
                 for (Data item : data) {
-                    item.setTax(item.getValue() * generalValue);
-                    totalValue = item.sumTotal(item.getValue() * generalValue);
-                    res += totalValue;
-                    System.out.println(res);
-                    total.setTotal(res);
+                    if (!item.getName().equals("Всего")) {
+                        item.setTax(item.getValue() * generalValue);
+                        totalValue = item.sumTotal(item.getTax());
+                        res += totalValue;
+                    }
                 }
             }
-            Stage resultStage = new Stage();
-            resultStage.setTitle("Taxulator");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("physTable.fxml"));
-            Scene scene = null;
+            total.setTotal(res);
+            currentData = data;
+
             try {
-                scene = new Scene(loader.load(), 515, 400);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("physTable.fxml"));
+                Scene scene = new Scene(loader.load(), 515, 400);
                 scene.getStylesheets().add(getClass().getResource("/org/example/calc_shit/stylePhysResult.css").toExternalForm());
 
+                PhysTableController controller = loader.getController();
+                controller.setData(data);
+
+                Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo2.png")));
+                Stage physTable = new Stage();
+                physTable.getIcons().add(icon);
+                physTable.setTitle("Asshole");
+                physTable.setScene(scene);
+                physTable.setResizable(false);
+                physTable.showAndWait();
+
             } catch (IOException e) {
-                System.err.println("Не могу загрузить physTable.fxml" + e.getMessage());
+                System.err.println("Не могу загрузить physTable.fxml: " + e.getMessage());
                 e.printStackTrace();
-                return;
             }
-
-            PhysTableController controller = loader.getController();
-            controller.setData(data); // <- Сюда идёт  список с налогами
-
-            Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo2.png")));
-            Stage physTable = new Stage();
-
-            physTable.getIcons().add(icon);
-            physTable.setTitle("Asshole");
-            physTable.setScene(scene);
-            physTable.setResizable(false);
-            physTable.showAndWait();
-
         });
 
+        toExcel.setOnAction(e -> exportToExcel(currentData));
+    }
+
+    private void exportToExcel(List<Data> data) {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Налоги");
+
+        Row header = sheet.createRow(0);
+        header.createCell(0).setCellValue("Источник дохода");
+        header.createCell(1).setCellValue("Сумма дохода");
+        header.createCell(2).setCellValue("Сумма налога");
+
+        int rowNum = 1;
+        for (Data item : data) {
+            Row row = sheet.createRow(rowNum++);
+            row.createCell(0).setCellValue(item.getName());
+            row.createCell(1).setCellValue(item.getValue());
+            row.createCell(2).setCellValue(item.getTax());
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Сохранить как Excel");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel файлы", "*.xlsx"));
+        File file = fileChooser.showSaveDialog(null);
+
+        if (file != null) {
+            try (FileOutputStream outputStream = new FileOutputStream(file)) {
+                workbook.write(outputStream);
+                workbook.close();
+
+                Alert success = new Alert(Alert.AlertType.INFORMATION);
+                success.setTitle("Успешно");
+                success.setHeaderText(null);
+                success.setContentText("Файл сохранён: " + file.getAbsolutePath());
+                success.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setTitle("Ошибка");
+                error.setHeaderText("Не удалось сохранить файл");
+                error.setContentText(e.getMessage());
+                error.showAndWait();
+            }
+        }
     }
 }

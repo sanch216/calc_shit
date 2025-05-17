@@ -7,11 +7,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.PhysTableController">
    <children>
-      <TableView fx:id="PhysTable" prefHeight="400.0" prefWidth="515.0">
+      <TableView fx:id="physTable" prefHeight="400.0" prefWidth="515.0">
         <columns>
           <TableColumn fx:id="nameIncome" prefWidth="219.19995725154877" text="Название дохода" />
-          <TableColumn fx:id="Income" minWidth="0.0" prefWidth="149.5999755859375" text="Доход" />
-            <TableColumn fx:id="Tax" prefWidth="147.19998168945312" text="Налог" />
+          <TableColumn fx:id="value" minWidth="0.0" prefWidth="149.5999755859375" text="Доход" />
+            <TableColumn fx:id="tax" prefWidth="147.19998168945312" text="Налог" />
         </columns>
       </TableView>
    </children>

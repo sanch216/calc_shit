@@ -72,20 +72,6 @@ public class Controller implements Initializable
 
 
 
-                } else if (value.equals(types[1])) {     // окно для юрлица
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Taxulator");
-                    alert.setHeaderText("В стадии разработки");
-                    alert.setContentText("Скоро...");
-                    alert.showAndWait();
-                    System.out.println("Выбрано Юрлицо");
-                } else if (value.equals(types[2])) {      // окно для ОсОО
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Taxulator");
-                    alert.setHeaderText("В стадии разработки");
-                    alert.setContentText("Скоро...");
-                    alert.showAndWait();
-                    System.out.println("Выбрано ООО (ОсОО)");
                 }
             } else {
                 System.out.println("ошибка");
