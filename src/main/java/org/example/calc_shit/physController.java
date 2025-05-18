@@ -110,6 +110,8 @@ public class physController {
                 if (transferValue != null && !transferValue.isEmpty()) {
                     doubTransferValue = Double.parseDouble(transferValue);
                 }
+                totalValue = doubMainJobValue + doubExtraJobValue + doubPropertySaleValue + doubTransferValue;
+
             } catch (NumberFormatException e) {
                 alert.setHeaderText("Ошибка! Введите числа без букв!");
                 alert.setContentText("Ошибка при парсинге числа: " + e.getMessage());
@@ -130,31 +132,31 @@ public class physController {
             data.add(transfer);
             data.add(total);
 
-            double res = 0;
+
             if (benefit.isSelected()) {
                 for (Data item : data) {
                     if (item.getName().equals("Основная работа")) {
-                        item.setTax(item.getValue() * benefitValue);
+                        item.setTax(item.getValue() * benefitValue );
                     } else if (!item.getName().equals("Всего")) {
                         item.setTax(item.getValue() * generalValue);
                     }
-                    if (!item.getName().equals("Всего")) {
-                        totalValue = item.sumTotal(item.getTax());
-                        res += totalValue;
+                    if (item.getName().equals("Всего")) {
+                        item.setTax(totalValue * generalValue - doubMainJobValue * benefitValue);
                     }
                 }
             } else {
                 for (Data item : data) {
+                    double sum = 0;
+                    sum += item.getValue();
                     if (!item.getName().equals("Всего")) {
                         item.setTax(item.getValue() * generalValue);
-                        totalValue = item.sumTotal(item.getTax());
-                        res += totalValue;
+                    }
+                    if (item.getName().equals("Всего")) {
+                        item.setTax(sum * generalValue);
                     }
                 }
             }
-            total.setTotal(res);
             currentData = data;
-
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("physTable.fxml"));
                 Scene scene = new Scene(loader.load(), 515, 400);
@@ -163,10 +165,10 @@ public class physController {
                 PhysTableController controller = loader.getController();
                 controller.setData(data);
 
-                Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo2.png")));
+                Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("logo.png")));
                 Stage physTable = new Stage();
                 physTable.getIcons().add(icon);
-                physTable.setTitle("Asshole");
+                physTable.setTitle("Taxulator");
                 physTable.setScene(scene);
                 physTable.setResizable(false);
                 physTable.showAndWait();

@@ -34,13 +34,14 @@ public class Controller implements Initializable
     @FXML
     private Text whoIsClient;
 
-    private final String[] types= {"Физлицо", "Юрлицо", "ООО (ОсОО)"};
+    //private final String[] types= {"Физлицо"};
+    String Phystype = "Физлицо";
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        clientType.getItems().addAll(types);
+        clientType.getItems().addAll(Phystype);
         Font font25 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 25);
         Font font21 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 21);
         title.setFont(font25);
@@ -50,7 +51,7 @@ public class Controller implements Initializable
         clientType.setOnAction(event -> {
             String value = clientType.getValue();
             if (value != null) {
-                if (value.equals(types[0])) {// окно для физлица
+                if (value.equals(Phystype)) {// окно для физлица
 
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("phys.fxml"));
                     Scene scene = null;
@@ -69,8 +70,6 @@ public class Controller implements Initializable
                     phys.initModality(Modality.APPLICATION_MODAL);
                     phys.setResizable(false);
                     phys.showAndWait();
-
-
 
                 }
             } else {
