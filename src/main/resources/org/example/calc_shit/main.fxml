@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.Controller">
    <children>
-      <ChoiceBox fx:id="clientType" layoutX="321.0" layoutY="83.0" prefHeight="26.0" prefWidth="137.0" />
-      <Text fx:id="whoIsClient" layoutX="14.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выберите для кого рассчитывать налог" wrappingWidth="307.19998779296884">
-         <font>
-            <Font name="Dimbo Russian" size="21.0" />
-         </font>
-      </Text>
-      <Text fx:id="title" layoutX="59.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Калькулятор для рассчета налога">
+      <Text fx:id="title" layoutX="80.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Калькулятор расчета налогов физических лиц" textAlignment="CENTER" wrappingWidth="319.19998779296884">
          <font>
             <Font name="Dimbo Russian" size="30.0" />
          </font>
       </Text>
+      <Button fx:id="start" layoutX="202.0" layoutY="93.0" mnemonicParsing="false" text="Начать">
+         <font>
+            <Font name="Dimbo Russian" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

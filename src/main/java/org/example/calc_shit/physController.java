@@ -62,22 +62,34 @@ public class physController {
     @FXML
     private TextField transferField;
 
+
+    @FXML
+    private Text gift;
+
+    @FXML
+    private TextField giftField;
+
+    @FXML
+    private Button help;
+
+    @FXML
+    private Text royaltie;
+
+    @FXML
+    private TextField royaltieField;
+
+
     private List<Data> currentData = new ArrayList<>();
 
     @FXML
     void initialize() {
 
-        Font font18 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
-        Font font20 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
-        Font font26 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 18);
-        income.setFont(font26);
-        extraJob.setFont(font20);
-        transfer.setFont(font20);
-        propertySale.setFont(font20);
-        mainJob.setFont(font20);
-        benefit.setFont(font18);
-        toExcel.setFont(font18);
-        calculate.setFont(font18);
+        help.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Help");
+            alert.setHeaderText("В разработке...");
+            alert.showAndWait();
+        });
 
         calculate.setOnAction(event -> {
             double benefitValue = 0.05;
@@ -87,11 +99,15 @@ public class physController {
             String extraJobValue = extraJobField.getText();
             String propertySaleValue = propertySaleField.getText();
             String transferValue = transferField.getText();
+            String giftValue = giftField.getText();
+            String royaltieValue = royaltieField.getText();
 
             double doubMainJobValue = 0.0;
             double doubExtraJobValue = 0.0;
             double doubPropertySaleValue = 0.0;
             double doubTransferValue = 0.0;
+            double doubGiftValue = 0.0;
+            double doubRoyaltieValue = 0.0;
             double totalValue = 0.0;
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -110,7 +126,13 @@ public class physController {
                 if (transferValue != null && !transferValue.isEmpty()) {
                     doubTransferValue = Double.parseDouble(transferValue);
                 }
-                totalValue = doubMainJobValue + doubExtraJobValue + doubPropertySaleValue + doubTransferValue;
+                if (giftValue != null && !giftValue.isEmpty()) {
+                    doubGiftValue = Double.parseDouble(giftValue);
+                }
+                if (royaltieValue != null && !royaltieValue.isEmpty()) {
+                    doubRoyaltieValue = Double.parseDouble(royaltieValue);
+                }
+                totalValue = doubMainJobValue + doubExtraJobValue + doubPropertySaleValue + doubTransferValue + doubGiftValue + doubRoyaltieValue;
 
             } catch (NumberFormatException e) {
                 alert.setHeaderText("Ошибка! Введите числа без букв!");
@@ -123,6 +145,8 @@ public class physController {
             Data extraJob = new Data("Дополнительная работа", doubExtraJobValue);
             Data propertySale = new Data("Продажа имущества", doubPropertySaleValue);
             Data transfer = new Data("Зарубежные переводы", doubTransferValue);
+            Data gift = new Data("Подарки", doubGiftValue);
+            Data royaltie =  new Data("Авторские вознаграждения", doubRoyaltieValue);
             Data total = new Data("Всего", totalValue);
 
             List<Data> data = new ArrayList<>();
@@ -130,6 +154,8 @@ public class physController {
             data.add(extraJob);
             data.add(propertySale);
             data.add(transfer);
+            data.add(gift);
+            data.add(royaltie);
             data.add(total);
 
 

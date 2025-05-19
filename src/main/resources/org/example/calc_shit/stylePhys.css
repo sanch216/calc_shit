@@ -1,6 +1,6 @@
 /* Styling the AnchorPane for a clean, minimalistic background */
 AnchorPane {
-    -fx-background-color: linear-gradient(to bottom, #f5f7fa, #e4e7eb);
+    -fx-background-color: linear-gradient(to bottom, #f5f7fa,  #cacacc);
 }
 
 /* Styling Buttons for a modern look with muted gray glow and uniform size */

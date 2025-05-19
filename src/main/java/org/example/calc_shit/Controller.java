@@ -25,38 +25,27 @@ public class Controller implements Initializable
     @FXML
     private URL location;
 
-    @FXML
-    private ChoiceBox<String> clientType;
 
     @FXML
     private Text title;
 
     @FXML
-    private Text whoIsClient;
-
-    //private final String[] types= {"Физлицо"};
-    String Phystype = "Физлицо";
-
+    private Button start;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-        clientType.getItems().addAll(Phystype);
         Font font25 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 25);
         Font font21 = Font.loadFont(getClass().getResourceAsStream("/fonts/DimboRussian.otf"), 21);
         title.setFont(font25);
-        whoIsClient.setFont(font21);
 
 
-        clientType.setOnAction(event -> {
-            String value = clientType.getValue();
-            if (value != null) {
-                if (value.equals(Phystype)) {// окно для физлица
+        start.setOnAction(event -> {
 
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("phys.fxml"));
                     Scene scene = null;
                     try {
-                        scene = new Scene(fxmlLoader.load(), 390, 370);
+                        scene = new Scene(fxmlLoader.load(), 555, 360);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -71,10 +60,8 @@ public class Controller implements Initializable
                     phys.setResizable(false);
                     phys.showAndWait();
 
-                }
-            } else {
-                System.out.println("ошибка");
-            }
+
+
         });
 
     }
