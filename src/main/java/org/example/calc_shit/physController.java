@@ -8,6 +8,8 @@ import java.util.*;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -15,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.poi.openxml4j.opc.PackageRelationship;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -85,10 +88,20 @@ public class physController {
     void initialize() {
 
         help.setOnAction(event -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Help");
-            alert.setHeaderText("В разработке...");
-            alert.showAndWait();
+            try {
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("help.fxml")));
+                Stage stage = new Stage();
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setTitle("Taxulator Help");
+                String css = Objects.requireNonNull(this.getClass().getResource("style.css")).toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         calculate.setOnAction(event -> {
