@@ -127,29 +127,42 @@ public class physController {
             alert.setTitle("Error");
 
             try {
-                if (mainJobValue != null && !mainJobValue.isEmpty()) {
+                if (!mainJobValue.isEmpty()) {
                     doubMainJobValue = Double.parseDouble(mainJobValue);
+                    if (doubMainJobValue < 0) throw new NumberFormatException("Основной доход не может быть отрицательным");
                 }
-                if (extraJobValue != null && !extraJobValue.isEmpty()) {
+
+                if (!extraJobValue.isEmpty()) {
                     doubExtraJobValue = Double.parseDouble(extraJobValue);
+                    if (doubExtraJobValue < 0) throw new NumberFormatException("Доп. доход не может быть отрицательным");
                 }
-                if (propertySaleValue != null && !propertySaleValue.isEmpty()) {
+
+                if (!propertySaleValue.isEmpty()) {
                     doubPropertySaleValue = Double.parseDouble(propertySaleValue);
+                    if (doubPropertySaleValue < 0) throw new NumberFormatException("Доход от продажи имущества не может быть отрицательным");
                 }
-                if (transferValue != null && !transferValue.isEmpty()) {
+
+                if (!transferValue.isEmpty()) {
                     doubTransferValue = Double.parseDouble(transferValue);
+                    if (doubTransferValue < 0) throw new NumberFormatException("Переводы не могут быть отрицательными");
                 }
-                if (giftValue != null && !giftValue.isEmpty()) {
+
+                if (!giftValue.isEmpty()) {
                     doubGiftValue = Double.parseDouble(giftValue);
+                    if (doubGiftValue < 0) throw new NumberFormatException("Подарки не могут быть отрицательными");
                 }
-                if (royaltieValue != null && !royaltieValue.isEmpty()) {
+
+                if (!royaltieValue.isEmpty()) {
                     doubRoyaltieValue = Double.parseDouble(royaltieValue);
+                    if (doubRoyaltieValue < 0) throw new NumberFormatException("Авторские гонорары не могут быть отрицательными");
                 }
-                totalValue = doubMainJobValue + doubExtraJobValue + doubPropertySaleValue + doubTransferValue + doubGiftValue + doubRoyaltieValue;
+
+                totalValue = doubMainJobValue + doubExtraJobValue + doubPropertySaleValue +
+                        doubTransferValue + doubGiftValue + doubRoyaltieValue;
 
             } catch (NumberFormatException e) {
-                alert.setHeaderText("Ошибка! Введите числа без букв!");
-                alert.setContentText("Ошибка при парсинге числа: " + e.getMessage());
+                alert.setHeaderText("Ошибка! Неверный ввод.");
+                alert.setContentText("Проверьте значения: " + e.getMessage());
                 alert.showAndWait();
                 return;
             }
