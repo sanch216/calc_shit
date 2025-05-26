@@ -129,40 +129,40 @@ public class physController {
             try {
                 if (!mainJobValue.isEmpty()) {
                     doubMainJobValue = Double.parseDouble(mainJobValue);
-                    if (doubMainJobValue < 0) throw new NumberFormatException("Основной доход не может быть отрицательным");
+                    if (doubMainJobValue < 0) throw new NumberFormatException("Basic income cannot be negative");
                 }
 
                 if (!extraJobValue.isEmpty()) {
                     doubExtraJobValue = Double.parseDouble(extraJobValue);
-                    if (doubExtraJobValue < 0) throw new NumberFormatException("Доп. доход не может быть отрицательным");
+                    if (doubExtraJobValue < 0) throw new NumberFormatException("Additional income cannot be negative");
                 }
 
                 if (!propertySaleValue.isEmpty()) {
                     doubPropertySaleValue = Double.parseDouble(propertySaleValue);
-                    if (doubPropertySaleValue < 0) throw new NumberFormatException("Доход от продажи имущества не может быть отрицательным");
+                    if (doubPropertySaleValue < 0) throw new NumberFormatException("Income from the sale of property cannot be negative");
                 }
 
                 if (!transferValue.isEmpty()) {
                     doubTransferValue = Double.parseDouble(transferValue);
-                    if (doubTransferValue < 0) throw new NumberFormatException("Переводы не могут быть отрицательными");
+                    if (doubTransferValue < 0) throw new NumberFormatException("Transfers cannot be negative");
                 }
 
                 if (!giftValue.isEmpty()) {
                     doubGiftValue = Double.parseDouble(giftValue);
-                    if (doubGiftValue < 0) throw new NumberFormatException("Подарки не могут быть отрицательными");
+                    if (doubGiftValue < 0) throw new NumberFormatException("Gifts cannot be negative");
                 }
 
                 if (!royaltieValue.isEmpty()) {
                     doubRoyaltieValue = Double.parseDouble(royaltieValue);
-                    if (doubRoyaltieValue < 0) throw new NumberFormatException("Авторские гонорары не могут быть отрицательными");
+                    if (doubRoyaltieValue < 0) throw new NumberFormatException("Royalties cannot be negative");
                 }
 
                 totalValue = doubMainJobValue + doubExtraJobValue + doubPropertySaleValue +
                         doubTransferValue + doubGiftValue + doubRoyaltieValue;
 
             } catch (NumberFormatException e) {
-                alert.setHeaderText("Ошибка! Неверный ввод.");
-                alert.setContentText("Проверьте значения: " + e.getMessage());
+                alert.setHeaderText("Oops! Incorrect input.");
+                alert.setContentText("Check the values: " + e.getMessage());
                 alert.showAndWait();
                 return;
             }
