@@ -7,12 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.Controller">
    <children>
-      <Text fx:id="title" layoutX="80.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Калькулятор расчета налогов физических лиц" textAlignment="CENTER" wrappingWidth="319.19998779296884">
+      <Text fx:id="title" layoutX="80.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tax calculator for individuals" textAlignment="CENTER" wrappingWidth="319.19998779296884">
          <font>
             <Font name="Dimbo Russian" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="start" layoutX="202.0" layoutY="93.0" mnemonicParsing="false" text="Начать">
+      <Button fx:id="start" layoutX="202.0" layoutY="93.0" mnemonicParsing="false" text="Start">
          <font>
             <Font name="Dimbo Russian" size="20.0" />
          </font>

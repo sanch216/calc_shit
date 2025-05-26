@@ -167,13 +167,13 @@ public class physController {
                 return;
             }
 
-            Data mainJob = new Data("Основная работа", doubMainJobValue);
-            Data extraJob = new Data("Дополнительная работа", doubExtraJobValue);
-            Data propertySale = new Data("Продажа имущества", doubPropertySaleValue);
-            Data transfer = new Data("Зарубежные переводы", doubTransferValue);
-            Data gift = new Data("Подарки", doubGiftValue);
-            Data royaltie =  new Data("Авторские вознаграждения", doubRoyaltieValue);
-            Data total = new Data("Всего", totalValue);
+            Data mainJob = new Data("Main job", doubMainJobValue);
+            Data extraJob = new Data("Extra job", doubExtraJobValue);
+            Data propertySale = new Data("Sale of property", doubPropertySaleValue);
+            Data transfer = new Data("Foreign transfers", doubTransferValue);
+            Data gift = new Data("Gifts", doubGiftValue);
+            Data royaltie =  new Data("Royalties", doubRoyaltieValue);
+            Data total = new Data("Total", totalValue);
 
             List<Data> data = new ArrayList<>();
             data.add(mainJob);
@@ -187,12 +187,12 @@ public class physController {
 
             if (benefit.isSelected()) {
                 for (Data item : data) {
-                    if (item.getName().equals("Основная работа")) {
+                    if (item.getName().equals("Main job")) {
                         item.setTax(item.getValue() * benefitValue );
-                    } else if (!item.getName().equals("Всего")) {
+                    } else if (!item.getName().equals("Total")) {
                         item.setTax(item.getValue() * generalValue);
                     }
-                    if (item.getName().equals("Всего")) {
+                    if (item.getName().equals("Total")) {
                         item.setTax(totalValue * generalValue - doubMainJobValue * benefitValue);
                     }
                 }
@@ -200,10 +200,10 @@ public class physController {
                 for (Data item : data) {
                     double sum = 0;
                     sum += item.getValue();
-                    if (!item.getName().equals("Всего")) {
+                    if (!item.getName().equals("Total")) {
                         item.setTax(item.getValue() * generalValue);
                     }
-                    if (item.getName().equals("Всего")) {
+                    if (item.getName().equals("Total")) {
                         item.setTax(sum * generalValue);
                     }
                 }
@@ -236,12 +236,12 @@ public class physController {
 
     private void exportToExcel(List<Data> data) {
         Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("Налоги");
+        Sheet sheet = workbook.createSheet("Tax");
 
         Row header = sheet.createRow(0);
-        header.createCell(0).setCellValue("Источник дохода");
-        header.createCell(1).setCellValue("Сумма дохода");
-        header.createCell(2).setCellValue("Сумма налога");
+        header.createCell(0).setCellValue("Source of income");
+        header.createCell(1).setCellValue("Amount of income");
+        header.createCell(2).setCellValue("Amount of tax");
 
         int rowNum = 1;
         for (Data item : data) {
@@ -252,8 +252,8 @@ public class physController {
         }
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Сохранить как Excel");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel файлы", "*.xlsx"));
+        fileChooser.setTitle("Save as Excel File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel files", "*.xlsx"));
         File file = fileChooser.showSaveDialog(null);
 
         if (file != null) {

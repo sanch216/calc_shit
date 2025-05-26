@@ -9,9 +9,9 @@
    <children>
       <TableView fx:id="physTable" prefHeight="400.0" prefWidth="515.0">
         <columns>
-          <TableColumn fx:id="nameIncome" prefWidth="219.19995725154877" text="Название дохода" />
-          <TableColumn fx:id="value" minWidth="0.0" prefWidth="149.5999755859375" text="Доход" />
-            <TableColumn fx:id="tax" prefWidth="147.19998168945312" text="Налог" />
+          <TableColumn fx:id="nameIncome" prefWidth="219.19995725154877" text="Name of income" />
+          <TableColumn fx:id="value" minWidth="0.0" prefWidth="149.5999755859375" text="Income" />
+            <TableColumn fx:id="tax" prefWidth="147.19998168945312" text="Tax" />
         </columns>
       </TableView>
    </children>
