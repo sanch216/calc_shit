@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<?import java.net.URL?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.helpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.helpController">
    <stylesheets>
       <URL value="@style.css" />
    </stylesheets>
    <children>
-      <TextArea fx:id="text" editable="false" prefHeight="714.0" prefWidth="922.0" text="Инструкции по вводу доходов и налоговые ставки&#10;&#10;Основная работа&#10;Введите сумму дохода от основной работы (зарплата, бонусы).&#10;Налог: 10% от суммы.&#10;Если чекбокс отмечен, налог на доход от основной работы снижается с 10% до 5%.&#10;Льгота не применяется к другим типам доходов.&#10;&#10;Дополнительная работа&#10;Введите доход от подработки или совместительства.&#10;Налог: 10% от суммы.&#10;&#10;Продажа имущества&#10;Введите доход от продажи недвижимости (менее 2 лет владения) или движимого имущества (менее 1 года владения).&#10;Укажите разницу между продажной ценой и стоимостью покупки (если есть документы).&#10;Налог: 10% от этой разницы.&#10;Если имущество было в собственности дольше указанных сроков, налог не взимается (введите 0).&#10;&#10;Зарубежные переводы&#10;Введите сумму переводов из-за границы.&#10;Личные переводы (например, от родственников) налогом не облагаются (введите 0).&#10;Если перевод связан с работой или услугами, налог: 10% от суммы.&#10;&#10;Подарки&#10;Введите стоимость денежных сумм или имущества, полученных в подарок.&#10;Подарки от близких родственников (супруги, родители, дети, братья, сестры) налогом не облагаются (введите 0).&#10;Подарки от других лиц облагаются налогом 10%, если их стоимость превышает 30 000 сом в год.&#10;&#10;Авторские вознаграждения&#10;Введите доход от интеллектуальной собственности (книги, музыка, изобретения).&#10;Налог: 10% от суммы.&#10;Если есть документально подтвержденные расходы на создание произведения, укажите доход за вычетом этих расходов." wrapText="true">
+      <TextArea fx:id="text" editable="false" prefHeight="714.0" prefWidth="922.0" text="Income entry instructions and tax rates&#10;s&#10;Main job&#10;Enter the amount of income from your main job (salary, bonuses).&#10;Tax: 10% of the amount.&#10;If the checkbox is checked, the tax on income from main work is reduced from 10% to 5%.&#10;The benefit does not apply to other types of income.&#10;&#10;Additional work&#10;Enter income from part-time work or part-time work.&#10;Tax: 10% of the amount.&#10;&#10;Sale of property&#10;Enter income from the sale of real estate (less than 2 years of ownership) or movable property (less than 1 year of ownership).&#10;Specify the difference between the sale price and the purchase price (if there are documents).&#10;Tax: 10% of this difference.&#10;If the property was owned for longer than the specified period, no tax is charged (enter 0).&#10;&#10;Foreign transfers&#10;Enter the amount of transfers from abroad.&#10;Personal transfers (for example, from relatives) are not taxed (enter 0).&#10;If the transfer is related to work or services, tax: 10% of the amount.&#10;&#10;Gifts&#10;Enter the value of the sums of money or property received as a gift.&#10;Gifts from close relatives (spouses, parents, children, brothers, sisters) are not taxed (enter 0).&#10;Gifts from other persons are subject to a 10% tax if their value exceeds 30,000 SOM per year.&#10;&#10;Royalties&#10;Enter income from intellectual property (books, music, inventions).&#10;Tax: 10% of the amount.&#10;If there are documented expenses for the creation of the work, indicate the income minus these expenses." wrapText="true">
          <font>
             <Font name="Dimbo Russian" size="18.0" />
          </font>

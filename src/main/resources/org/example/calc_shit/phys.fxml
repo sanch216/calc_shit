@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.calc_shit.physController">
    <children>
-      <Button fx:id="calculate" layoutX="220.0" layoutY="268.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="114.0" text="calculate">
+      <Button fx:id="calculate" layoutX="220.0" layoutY="268.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="114.0" text="Calculate">
          <font>
             <Font name="Dimbo Russian" size="17.0" />
          </font></Button>
